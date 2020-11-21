@@ -15,7 +15,7 @@ const donasi = require("./lib/donasi.js");
 const info = require("./lib/info.js");
 /////////////////
 const BotName = 'RIZKI BOT'; 
-const instagram = 'www.instagram.com/rizkihidayat260'; 
+const instagram = 'Gak Punya'; 
 const telegram = 'Gak Punya'; 
 const kapanbotaktif = 'KETIKA HANYA DIAKTIFKAN'; 
 const youtube = 'https://www.youtube.com/channel/UCN8jnLDQz-madZezE5O5JoQ';
