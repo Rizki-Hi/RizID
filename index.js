@@ -1,4 +1,3 @@
-
 const qrcode = require("qrcode-terminal");
 const moment = require("moment");
 const cheerio = require("cheerio");
@@ -19,7 +18,7 @@ const instagram = 'Gak Punya';
 const telegram = 'Gak Punya'; 
 const kapanbotaktif = 'KETIKA HANYA DIAKTIFKAN'; 
 const youtube = 'https://www.youtube.com/channel/UCN8jnLDQz-madZezE5O5JoQ';
-//const grupch1 = 'belum ada grup'; 
+const grupch1 = 'belum ada grup'; 
 //const grupch2 = 'belum ada grup' ; 
 const
 {
@@ -65,11 +64,11 @@ fs.existsSync('./session.json') && conn.loadAuthInfo('./session.json')
 //conn.connectOptions.agent = ProxyAgent ('http://1.0.180.120:8080')
 conn.connect();
 
-conn.on('user-presence-update', json => console.log(json.id + ' presence is => ' + json.type)) || console.log('Bot by ig:@mwmaulana310')
+conn.on('user-presence-update', json => console.log(json.id + ' presence is => ' + json.type)) || console.log('Bot by ig:@reuz.id')
 conn.on('message-status-update', json =>
 {
    const participant = json.participant ? ' (' + json.participant + ')' : '' // participant exists when the message is from a group
-   console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by ig:@mwmaulana310`)
+   console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by ig:@reuz.id`)
 })
 
 conn.on('message-new', async(m) =>
@@ -233,7 +232,13 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=zFuV88p
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
-
+if (text.includes("!tiktok")) {
+const tictoc = text.replace(/!tiktok /, "")
+axios.get(`https://st4rz.herokuapp.com/api/tiktok?url=${tictoc}`).then((res) => {
+     let titoe = `Berhasil!!! Silahkan klik link dibawah ini untuk mendownload hasilnya! \n👇👇👇👇👇👇👇👇👇\n\nJudul: ${res.data.deskripsi} \n\nDurasi: ${res.data.durasi}\n\nNama: ${res.data.nama}\n\nUrl: ${res.data.urlvideo}`;
+conn.sendMessage(id, titoe, MessageType.text);
+})
+}
 if (text.includes("!wikia")){
 const teks = text.replace(/!wikia /, "")
 axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${text}`).then((res) => {
