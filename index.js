@@ -518,7 +518,7 @@ const get = require('got')
   }
    if (text.includes("!pict cewek"))
    {
-    var items = ["ullzang girl", "cewe cantik", "hijab cantik", "korean girl", "remaja cantik", "cewek korea", "cewek jepang"];
+    var items = ["ullzang girl", "cewe cantik", "hijab cantik", "korean girl", "cewek girls", "cewek korea", "cewek jepang"];
     var cewe = items[Math.floor(Math.random() * items.length)];
     var url = "https://api.fdci.se/rep.php?gambar=" + cewe;
     
@@ -602,8 +602,18 @@ if (text.includes("!animepict"))
     
     });
     }
- else if (text.includes("!ttsid")) {
-  var teks = text.split("!ttsid ")[1];
+ if (text.includes("#scdl")){
+const fs = require("fs");
+const scdl = require("./lib/scdl");
+
+scdl.setClientID("iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX");
+
+scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-vict-molina")
+    .pipe(fs.createWriteStream("mp3/song.mp3"));
+}
+
+ else if (text.includes("#tts")) {
+  var teks = text.split("#ttsid ")[1];
   var path = require('path');
   var text1 = teks.slice(6);
   text1 = suara;
@@ -621,12 +631,11 @@ gtts.save(filepath, suara, function() {
 await new Promise(resolve => setTimeout(resolve, 500));
 
 	if(suara.length > 200){ // check longness of text, because otherways google translate will give me a empty file
-  conn.sendMessage("Text kepanjangan bro!")
+  msg.reply("Text kepanjangan bro!")
 }else{
 
 const buffer = fs.readFileSync(filepath)
 	conn.sendMessage(id , buffer , MessageType.audio);
-
 };
 }
 if (text.includes("!lirik")){
